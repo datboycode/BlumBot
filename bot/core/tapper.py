@@ -31,8 +31,8 @@ class Tapper:
         self.first_name = None
         self.last_name = None
         self.fullname = None
-        self.user_uuid = None  # UUID field to store the user ID from the response
-        self.avatar_file_key = None  # Avatar field to store the avatar file key
+        self.user_uuid = None  
+        self.avatar_file_key = None  
         self.start_param = None
         self.peer = None
         self.first_run = None
@@ -164,9 +164,9 @@ class Tapper:
             try:
                 if self.user_id == 0:
                     if self.user_uuid and self.username:
-                        self.user_id = self.user_uuid  # Set user_id from the UUID fetched from the API
-                        self.username = self.username  # Username fetched from the API
-                        self.avatar_file_key = self.avatar_file_key  # Avatar file key fetched from the API
+                        self.user_id = self.user_uuid 
+                        self.username = self.username  
+                        self.avatar_file_key = self.avatar_file_key  
                         self.debug(f"👤 User info updated from API: UUID={self.user_id}, Username={self.username}, Avatar File Key={self.avatar_file_key}")
             except Exception as e:
                 print(e)
@@ -391,7 +391,6 @@ class Tapper:
             total_games = 0
             tries = 3
             while play_passes:
-                # Pass the refresh_token to start_game
                 game_id = await self.start_game(http_client=http_client, refresh_token=refresh_token)
 
                 if not game_id or game_id == "cannot start game":
@@ -440,14 +439,11 @@ class Tapper:
 
     async def start_game(self, http_client: aiohttp.ClientSession, refresh_token: str):
         try:
-            # Add the Authorization header with the Bearer token (if not already added)
             http_client.headers["Authorization"] = f"Bearer {refresh_token}"
 
-            # Send the POST request to start the game
             resp = await http_client.post(f"{self.game_url}/api/v1/game/play", ssl=False)
             response_data = await resp.json()
 
-            # Check if the response contains a gameId or message
             if "gameId" in response_data:
                 return response_data.get("gameId")
             elif "message" in response_data:
@@ -582,7 +578,7 @@ class Tapper:
         try:
             url = f"{self.user_url}/api/v1/user/me"
             headers = {
-                "Authorization": f"Bearer {http_client.headers['Authorization']}",  # Include access token
+                "Authorization": f"Bearer {http_client.headers['Authorization']}",  
                 "Accept": "application/json",
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                 "Accept-Language": "en"
@@ -593,8 +589,6 @@ class Tapper:
                 if resp.status == 200:
                     resp_json = await resp.json()
                     self.debug(f"📥 Received user info response: {resp_json}")
-                    
-                    # Extract and save the relevant data
                     self.user_uuid = resp_json['id']['id']
                     self.username = resp_json['username']
                     self.avatar_file_key = resp_json.get('avatarFileKey')
