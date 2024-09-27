@@ -309,7 +309,10 @@ class Tapper:
                 'Secure your Crypto!': 'BEST PROJECT EVER',
                 'Navigating Crypto': 'HEYBLUM',
                 'What are Telegram Mini Apps?': 'CRYPTOBLUM',
-                'Say No to Rug Pull!': 'SUPERBLUM'
+                'Say No to Rug Pull!': 'SUPERBLUM',
+                '$2.5M+ DOGS Airdrop': 'HAPPYDOGS',
+                'What Are AMMs?':'BLUMERSSS',
+                'Liquidity Pools Guide': 'CRYPTOSMART',
             }
 
             payload = {'keyword': keywords.get(title)}
