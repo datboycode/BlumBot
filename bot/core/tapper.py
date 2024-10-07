@@ -304,16 +304,19 @@ class Tapper:
     async def validate_task(self, http_client: aiohttp.ClientSession, task_id, title):
         try:
             keywords = {
-                'How to Analyze Crypto?': 'VALUE',
-                'Forks Explained': 'GO GET',
-                'Secure your Crypto!': 'BEST PROJECT EVER',
-                'Navigating Crypto': 'HEYBLUM',
-                'What are Telegram Mini Apps?': 'CRYPTOBLUM',
-                'Say No to Rug Pull!': 'SUPERBLUM',
-                '$2.5M+ DOGS Airdrop': 'HAPPYDOGS',
-                'What Are AMMs?':'BLUMERSSS',
-                'Liquidity Pools Guide': 'CRYPTOSMART',
-            }
+                        'How to Analyze Crypto?': 'VALUE',
+                        'Forks Explained': 'GO GET',
+                        'Secure your Crypto!': 'BEST PROJECT EVER',
+                        'Navigating Crypto': 'HEYBLUM',
+                        'What are Telegram Mini Apps?': 'CRYPTOBLUM',
+                        'Say No to Rug Pull!': 'SUPERBLUM',
+                        'What Are AMMs?': 'CRYPTOSMART',
+                        'Liquidity Pools Guide': 'BLUMERSSS',
+                        '$2.5M+ DOGS Airdrop': 'HAPPYDOGS',
+                        "Doxxing? What's that?": 'NODOXXING',
+                        "Pre-Market Trading?": 'WOWBLUM',
+                        'How to Memecoin?': 'MEMEBLUM'
+                    }
 
             payload = {'keyword': keywords.get(title)}
 
