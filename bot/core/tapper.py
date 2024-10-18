@@ -811,7 +811,6 @@ class Tapper:
         except KeyboardInterrupt:
             logger.warning("Interrupted by user, closing session...")
         finally:
-            # Close the session properly to prevent unclosed client session errors
             await http_client.close()
             logger.info("Session closed successfully.")
 
