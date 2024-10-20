@@ -225,7 +225,6 @@ class Tapper:
                         self.warning('Relogin')
                         await asyncio.sleep(delay=3)
                         continue
-                    #self.debug(f'login text {await resp.text()}')
                     resp_json = await resp.json()
 
                     return resp_json.get("token").get("access"), resp_json.get("token").get("refresh")
@@ -242,7 +241,6 @@ class Tapper:
                         self.warning('Relogin')
                         await asyncio.sleep(delay=3)
                         continue
-                    #self.debug(f'login text {await resp.text()}')
                     resp_json = await resp.json()
 
                     if resp_json.get("message") == "Username is not available":
